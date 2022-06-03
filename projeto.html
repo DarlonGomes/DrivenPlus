@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fun Co.</title>
+    <style>
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      table,
+      caption,
+      tbody,
+      tfoot,
+      thead,
+      tr,
+      th,
+      td,
+      article,
+      aside,
+      canvas,
+      details,
+      embed,
+      figure,
+      figcaption,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      output,
+      ruby,
+      section,
+      summary,
+      time,
+      mark,
+      audio,
+      video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      /* HTML5 display-role reset for older browsers */
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      section {
+        display: block;
+      }
+      body {
+        line-height: 1;
+      }
+      ol,
+      ul {
+        list-style: none;
+      }
+      blockquote,
+      q {
+        quotes: none;
+      }
+      blockquote:before,
+      blockquote:after,
+      q:before,
+      q:after {
+        content: "";
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      body {
+        font-family: "Merriweather";
+        display: flex;
+        flex-direction: column;
+      }
+      header {
+        width: 100%;
+        height: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url("https://i.imgur.com/lF9Bccw.png");
+      }
+
+      header img {
+        width: 100%;
+        height: 250px;
+        object-fit: fill;
+      }
+
+      .menu {
+        width: 100%;
+        height: 40px;
+        background-color: #f4ec19;
+        font-size: 18px;
+        font-weight: 400;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+
+      .menu h4:hover {
+        cursor: pointer;
+        color: #7a7834;
+      }
+
+      .video {
+        width: auto;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .video video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+      main {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        background-image: url("https://i.imgur.com/65iXNG8.jpg");
+        object-fit: fill;
+      }
+
+      main .conteudo {
+        margin: 30px 6%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      main .conteudo:hover {
+        cursor: pointer;
+        filter: brightness(1.1);
+      }
+
+      main .conteudo .amarelo {
+        width: 166px;
+        height: 166px;
+        border: 5px solid #f4ec19;
+        box-sizing: border-box;
+      }
+
+      main .conteudo img {
+        width: 144px;
+        height: 162px;
+        object-fit: cover;
+        border: 5px solid #6528a5;
+        margin-top: 15px;
+        margin-left: 6px;
+        box-sizing: border-box;
+      }
+
+      main .conteudo .info {
+        width: 166px;
+        height: 30px;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 300;
+        box-sizing: border-box;
+        color: black;
+      }
+
+      main .conteudo .preco {
+        width: 166px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 15px;
+        font-weight: 300;
+        color: #6528a5;
+      }
+
+      footer .info {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: #6528a5;
+        border-top: 1px solid #a679d5;
+        border-bottom: 1px solid #a679d5;
+      }
+
+      footer .info .item {
+        height: 60px;
+        display: flex;
+        align-items: center;
+      }
+
+      footer .info .item .icon {
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
+      footer .info .item h3 {
+        color: #dbd885;
+        font-size: 15px;
+      }
+
+      footer .info .item h5 {
+        color: #dbd885;
+        font-size: 15px;
+      }
+
+      footer .info .item p {
+        color: #dbd885;
+        font-size: 12px;
+      }
+      footer .info ion-icon {
+        font-size: 40px;
+        color: #f4ec19;
+        margin-right: 5px;
+      }
+
+      footer .icon:hover {
+        cursor: pointer;
+        filter: brightness(1.1);
+      }
+
+      a {
+        text-decoration: none;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo"><img src="https://i.imgur.com/GhbduyF.png" /></div>
+    </header>
+    <div class="menu">
+      <h4>HOME</h4>
+      <h4>PRODUTOS :)</h4>
+      <h4>SOBRE nós <3</h4>
+      <h4>CONTATO</h4>
+    </div>
+
+    <main>
+      <div class="conteudo">
+        <div class="amarelo">
+          <img src="https://i.imgur.com/sURJZAk.jpg" />
+        </div>
+        <div class="info">BRINCO INICIAL COLORIDO DE RESINA</div>
+        <div class="preco">R$15,00</div>
+      </div>
+      <div class="conteudo">
+        <div class="amarelo">
+          <img src="https://i.imgur.com/0TPfv1l.jpg" />
+        </div>
+        <div class="info">CINZEIRO ET PINK</div>
+        <div class="preco">R$23,00</div>
+      </div>
+      <div class="conteudo">
+        <div class="amarelo">
+          <img src="https://i.imgur.com/OXy677w.jpg" />
+        </div>
+        <div class="info">GARGANTILHA BABY GIRL CUSTOM</div>
+        <div class="preco">R$26,00</div>
+      </div>
+      <div class="conteudo">
+        <div class="amarelo">
+          <img src="https://i.imgur.com/heMTyD3.jpg" />
+        </div>
+        <div class="info">BRINCO CORAÇÃO "ABC" DE RESINA</div>
+        <div class="preco">R$20,00</div>
+      </div>
+      <div class="conteudo">
+        <div class="amarelo">
+          <img src="https://i.imgur.com/VHKEgE8.jpg" />
+        </div>
+        <div class="info">BRINCO SERPENTE PRETA DE RESINA</div>
+        <div class="preco">R$14,00</div>
+      </div>
+      <div class="conteudo">
+        <div class="amarelo">
+          <img src="https://i.imgur.com/kGPe6Wu.jpg" />
+        </div>
+        <div class="info">BRINCO LUCKY CHARM CUSTOM</div>
+        <div class="preco">R$13,50</div>
+      </div>
+      <div class="conteudo">
+        <div class="amarelo">
+          <img src="https://i.imgur.com/Es93wPz.jpg" />
+        </div>
+        <div class="info">BRINCO URSINHO CUSTOM</div>
+        <div class="preco">R$16,50</div>
+      </div>
+      <div class="conteudo">
+        <div class="amarelo">
+          <img src="https://i.imgur.com/RVrJosy.jpg" />
+        </div>
+        <div class="info">JOGO DA VELHA DE RESINA</div>
+        <div class="preco">R$30,00</div>
+      </div>
+      <div class="conteudo">
+        <div class="amarelo">
+          <img src="https://i.imgur.com/KoK4UWQ.jpg" />
+        </div>
+        <div class="info">BRINCO BANANA</div>
+        <div class="preco">R$14,00</div>
+      </div>
+      <div class="conteudo">
+        <div class="amarelo">
+          <img src="https://i.imgur.com/O1V2jTU.jpg" />
+        </div>
+        <div class="info">COLAR EGG</div>
+        <div class="preco">R$21,00</div>
+      </div>
+      <div class="conteudo">
+        <div class="amarelo">
+          <img src="https://i.imgur.com/aulINxt.jpg" />
+        </div>
+        <div class="info">COLAR LUCKY CHARM</div>
+        <div class="preco">R$26,00</div>
+      </div>
+      <div class="conteudo">
+        <div class="amarelo">
+          <img src="https://i.imgur.com/qcXvR85.jpg" />
+        </div>
+        <div class="info">PORTA COPO ET DE RESINA</div>
+        <div class="preco">R$10,00</div>
+      </div>
+      <div class="conteudo">
+        <div class="amarelo">
+          <img src="https://i.imgur.com/LGEuFWw.jpg" />
+        </div>
+        <div class="info">PORTA COPO DRINK DE RESINA</div>
+        <div class="preco">R$10,00</div>
+      </div>
+      <div class="conteudo">
+        <div class="amarelo">
+          <img src="https://i.imgur.com/pXJpp5k.jpg" />
+        </div>
+        <div class="info">CHAVEIRO INICIAL</div>
+        <div class="preco">R$19,00</div>
+      </div>
+      <div class="conteudo">
+        <div class="amarelo">
+          <img src="https://i.imgur.com/yKbYbvo.jpg" />
+        </div>
+        <div class="info">INCENSÁRIO EGG DE RESINA</div>
+        <div class="preco">R$22,00</div>
+      </div>
+      <div class="conteudo">
+        <div class="amarelo">
+          <img src="https://i.imgur.com/GwDrbLv.jpg" />
+        </div>
+        <div class="info">DOMINÓ COLORIDO DE RESINA</div>
+        <div class="preco">R$28,00</div>
+      </div>
+    </main>
+    <footer>
+      <div class="info">
+        <a
+          href="https://instagram.com/oi.funcompany?utm_medium=copy_link"
+          target="_blank"
+        >
+          <div class="item">
+            <div class="icon"><ion-icon name="logo-instagram"></ion-icon></div>
+            <div class="icon">
+              <p>Segue a gente lá no instagram<3</p>
+              <h3>@OI.FUNCOMPANY</h3>
+            </div>
+          </div>
+        </a>
+        <a href="https://vm.tiktok.com/ZMLCMVG8G/" target="_blank">
+          <div class="item">
+            <div class="icon"><ion-icon name="logo-tiktok"></ion-icon></div>
+            <div class="icon">
+              <p>Nos acompanhe também no TikTok</p>
+              <h3>funcompany__</h3>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="info">
+        <div class="item">
+          <div class="icon"><ion-icon name="boat-outline"></ion-icon></div>
+          <div class="icon">
+            <h5>Enviamos suas compras</h5>
+            <p>entrega em todo país</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="icon"><ion-icon name="wallet-outline"></ion-icon></div>
+          <div class="icon">
+            <h5>Pague como quiser</h5>
+            <p>crédito, débito, boleto e pix</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="icon">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+          </div>
+          <div class="icon">
+            <h5>Compre com segurança</h5>
+            <p>seus dados sempre protegidos</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
