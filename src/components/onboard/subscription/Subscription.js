@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import axios from "axios";
 import {useState, useContext, useEffect} from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {UserContext} from '../../../context/UserContext'
 import { Grid} from "react-loader-spinner";
 function Subscription () {
@@ -10,28 +10,25 @@ function Subscription () {
     const [plans, setPlans] = useState(null);
     
     useEffect(()=>{
-       const promise = axios.get('https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships', token)
+       const promise = axios.get('https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships',token)
         promise.then(response => setPlans(response.data))
-    },[])
+    },[token])
 
     function loadIt (){
-        if(plans === null){
+        if(plans !== null){
             return(
-                <Loading><Grid color="#FF4791" height={80} width={80} /></Loading>
+                <>
+                <h1>Escolha seu Plano</h1>
+                {plans.map((element)=><Plan key={element.id} onClick={()=> choose(element.id)}>
+                    <img src={element.image} alt="Logo" />
+                    <p>R$ {element.price}</p>
+                </Plan> )}
+            </>
             )
         }
         else{
             return(
-                <>
-                    {plans.map((element)=>{
-                    <Link to={`/subscriptions/${element.id}`}>
-                    <Plan key={element.id} onClick={()=> choose(element.id)}>
-                    <img src={element.image} alt="Icone da Driven Plus"/> 
-                    <p>R$ {element.price}</p>
-                    </Plan>
-                    </Link>
-                    })}
-                </>
+                <Loading><Grid color="#FF4791" height={80} width={80} /></Loading>
             )
         }
     }
@@ -44,7 +41,6 @@ function Subscription () {
 
     return(
         <Page>
-            <h1>Escolha seu Plano</h1>
             {Load}
         </Page>
     )
