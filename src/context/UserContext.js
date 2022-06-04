@@ -2,11 +2,11 @@ import { createContext, useState } from 'react';
 export const UserContext = createContext();
 
 const DataProvider = ({children})  => {
-    const [data, setData] = useState({});
-    
+    const [data, setData] = useState(null);
+    const [token, setToken] = useState(null)
  
     return(
-        <UserContext.Provider value={{ data, setData }}>
+        <UserContext.Provider value={{ data, setData, token, setToken }}>
             {children}
         </UserContext.Provider>
     )

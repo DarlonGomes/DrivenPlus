@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function Plan () {
+function PlanInfo () {
 
 
     return(
@@ -10,4 +10,4 @@ function Plan () {
     )
 }
 const Page = styled.div``;
-export default Plan
+export default PlanInfo;

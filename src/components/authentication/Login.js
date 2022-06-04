@@ -8,7 +8,7 @@ import { ThreeDots } from "react-loader-spinner";
 
 function Login () {
     const navigate = useNavigate();
-    const {data, setData} = useContext(UserContext)
+    const { setData, setToken} = useContext(UserContext)
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [isDisabled, setIsDisabled] = useState(false);
@@ -21,17 +21,19 @@ function Login () {
             password: password
         }
 
-            const promise = axios.post('https://mock-api.driven.com.br/api/v4/driven-plus/auth/login', body)
+           axios.post('https://mock-api.driven.com.br/api/v4/driven-plus/auth/login', body)
                 .then((response)=>{
                     setData(response.data);
-                    if(data.membership === undefined){
+                    setToken({headers:{
+                        Authorization: `Bearer ${response.data.token}`
+                   }})
+                    if(response.data.membership === null){
                         navigate("/subscriptions")
+                      
                     }
-                    else{
-                        navigate("/home")
-                    }   
+                    else{navigate("/home")} 
                 })
-                .catch(response => alert("Não foi possível acessar com esses dados."));
+
     }
 
     function toggleButton () {
