@@ -8,7 +8,7 @@ import { ThreeDots } from "react-loader-spinner";
 
 function Login () {
     const navigate = useNavigate();
-    const { setData, setToken} = useContext(UserContext)
+    const { setData, setToken, setMembership} = useContext(UserContext)
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [isDisabled, setIsDisabled] = useState(false);
@@ -30,8 +30,9 @@ function Login () {
                     if(response.data.membership === null){
                         navigate("/subscriptions")
                       
-                    }
-                    else{navigate("/home")} 
+                    }else{
+                        setMembership(response.data.membership)
+                        navigate("/home")} 
                 })
 
     }
