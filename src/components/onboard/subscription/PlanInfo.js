@@ -13,7 +13,7 @@ import axios from "axios";
 function PlanInfo () {
     const navigate = useNavigate();
 
-    const {token, setMembership} = useContext(UserContext);
+    const {token, data, setData} = useContext(UserContext);
     const planID = useParams();
     const [plan, setPlan] = useState(null);
 
@@ -30,6 +30,7 @@ function PlanInfo () {
         axios.get(`https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships/${planID.planID}`, token)
             .then(response => setPlan(response.data))
     },[])
+    
     
     function loadIt (){
         if(plan !== null){
@@ -142,13 +143,14 @@ function PlanInfo () {
         axios.post('https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions', body, token)
             .then((response)=>{
                 setIsDisabled(false);
-                setMembership(response.data);
+                const newObj = {...data, membership: response.data.membership};
+                setData(newObj);
                 navigate("/home");
             })
             .catch((res) =>{
-                alert("Ocorreu um erro. Tente novamente daqui uns minutos.")
                 setIsDisabled(false);
                 setIsModalVisible(false);
+                alert("Ocorreu um erro. Tente novamente daqui uns minutos.")
             })
         
     }

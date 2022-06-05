@@ -6,14 +6,14 @@ import {UserContext} from '../../../context/UserContext'
 import { Grid} from "react-loader-spinner";
 function Subscription () {
     const navigate = useNavigate();
-    const {token} = useContext(UserContext);
+    const {token, data} = useContext(UserContext);
     const [plans, setPlans] = useState(null);
     
     useEffect(()=>{
        const promise = axios.get('https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships',token)
         promise.then(response => setPlans(response.data))
     },[token])
-
+    
     function loadIt (){
         if(plans !== null){
             return(

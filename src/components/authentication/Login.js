@@ -31,7 +31,6 @@ function Login () {
                         navigate("/subscriptions")
                       
                     }else{
-                        setMembership(response.data.membership)
                         navigate("/home")} 
                 })
 
