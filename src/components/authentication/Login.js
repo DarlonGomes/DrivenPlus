@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import axios from "axios";
-import {useState, useContext} from 'react';
+import {useState, useContext, useEffect} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import {UserContext} from "../../context/UserContext";
@@ -12,18 +12,40 @@ function Login () {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [isDisabled, setIsDisabled] = useState(false);
+
+    useEffect(()=>{
+        if(localStorage.getItem("user") !== null){
+            const local = JSON.parse(localStorage.getItem("user"));
+            axios.post('https://mock-api.driven.com.br/api/v4/driven-plus/auth/login', local)
+                 .then((response) => {
+                     setData(response.data);
+                     setToken({headers:{
+                        Authorization: `Bearer ${response.data.token}`
+                   }})
+                    if(response.data.membership === null){
+                        navigate("/subscriptions")
+                      
+                    }else{
+                        navigate("/home")} 
+                 })
+        }
+        
+    },[])
+    
     function validate (event){
 
         event.preventDefault();
+
+       
         setIsDisabled(true);
         const body = {
             email: email,
             password: password
         }
-
            axios.post('https://mock-api.driven.com.br/api/v4/driven-plus/auth/login', body)
                 .then((response)=>{
                     setData(response.data);
+                    localStorage.setItem("user", JSON.stringify(body));
                     setToken({headers:{
                         Authorization: `Bearer ${response.data.token}`
                    }})
