@@ -55,6 +55,12 @@ function Login () {
                     }else{
                         navigate("/home")} 
                 })
+                .catch((res) => {
+                    setEmail("");
+                    setPassword("");
+                    setIsDisabled(false);
+                    alert("Não foi possível efetuar o login. Cheque suas credenciais e tente novamente")
+            })
 
     }
 

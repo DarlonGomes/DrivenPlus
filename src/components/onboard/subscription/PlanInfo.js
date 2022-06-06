@@ -150,7 +150,11 @@ function PlanInfo () {
             .catch((res) =>{
                 setIsDisabled(false);
                 setIsModalVisible(false);
-                alert("Ocorreu um erro. Tente novamente daqui uns minutos.")
+                setCardCVV("");
+                setCardExpiration("");
+                setCardName("");
+                setCardNumber("");
+                alert("Cheque suas credenciais e tente novamente.")
             })
         
     }

@@ -29,8 +29,14 @@ function register(event){
             setIsDisabled(false);
             navigate("/")
         })
-        .catch(response => alert("Dados não válidos, tente outra vez."))
-        
+        .catch((response) =>{
+            setIsDisabled(false);
+            setRegisterName("");
+            setRegisterCPF("");
+            setRegisterPassword("");
+            setRegisterEmail("");
+            alert("Dados não válidos, tente outra vez.")
+        })
 }
 
 function toggleButton () {
